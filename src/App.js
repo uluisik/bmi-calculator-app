@@ -2,14 +2,15 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
+  //states
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [bmi, setBmi] = useState("");
-  const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
 
-  let calcBmi = (event) => {
-    event.preventDefault();
+  let calcBmi = (e) => {
+    e.preventDefault();
 
     if (weight === 0 || height === 0) {
       alert("please type weight and height");
@@ -39,24 +40,24 @@ function App() {
     }
   };
   let reload = () => {
-    window.location.reload();
+    window.location.reload(false);
   };
 
   return (
     <div className="App">
       <div className="container">
-        <h2 className="center">Bmi Calculator</h2>
+        <h2 className="center">BMI Calculator</h2>
         <form onSubmit={calcBmi}>
           <div>
             <label>Weight (kg)</label>
             <input value={weight} onChange={(e) => setWeight(e.target.value)} />
           </div>
           <div>
-            <label>Height (cm)</label>
+            <label>Height (m)</label>
             <input value={height} onChange={(e) => setHeight(e.target.value)} />
           </div>
           <div>
-            <button className="btn" type="submit" onClick={() => calcBmi()}>
+            <button className="btn" type="submit">
               Submit
             </button>
             <button
@@ -64,7 +65,7 @@ function App() {
               type="submit"
               onClick={() => reload()}
             >
-              Delete Informations
+              Delete Infos
             </button>
           </div>
         </form>
@@ -73,7 +74,7 @@ function App() {
           <p>{message}</p>
         </div>
         <div className="img-container">
-          <img src={Image} alt="kvk" />
+          <img src={image} alt="" />
         </div>
       </div>
     </div>
